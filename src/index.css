@@ -1,0 +1,416 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* AI-Tech Portfolio Design System */
+
+@layer base {
+  :root {
+    --background: 75 20% 95%;
+    --foreground: 75 10% 10%;
+
+    --card: 75 15% 92%;
+    --card-foreground: 75 10% 10%;
+
+    --popover: 75 15% 92%;
+    --popover-foreground: 75 10% 10%;
+
+    --primary: 72 85% 50%;
+    --primary-foreground: 75 20% 5%;
+
+    --secondary: 75 30% 25%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 75 10% 85%;
+    --muted-foreground: 75 10% 40%;
+
+    --accent: 72 85% 50%;
+    --accent-foreground: 75 20% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 75 10% 80%;
+    --input: 75 10% 85%;
+    --ring: 72 85% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom colors for portfolio */
+    --neon-cyan: 72 85% 55%;
+    --neon-purple: 85 50% 40%;
+    --neon-green: 72 90% 50%;
+    --neon-pink: 45 80% 55%;
+    
+    --glass: 75 20% 100% / 0.1;
+    --glass-border: 75 20% 100% / 0.2;
+  }
+
+  .dark {
+    --background: 75 15% 6%;
+    --foreground: 60 20% 95%;
+
+    --card: 75 15% 10%;
+    --card-foreground: 60 20% 95%;
+
+    --popover: 75 15% 10%;
+    --popover-foreground: 60 20% 95%;
+
+    --primary: 72 85% 55%;
+    --primary-foreground: 75 20% 5%;
+
+    --secondary: 75 30% 20%;
+    --secondary-foreground: 60 20% 95%;
+
+    --muted: 75 15% 15%;
+    --muted-foreground: 60 10% 55%;
+
+    --accent: 72 85% 55%;
+    --accent-foreground: 75 20% 5%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 75 15% 18%;
+    --input: 75 15% 15%;
+    --ring: 72 85% 55%;
+
+    /* Custom colors for portfolio */
+    --neon-cyan: 72 85% 55%;
+    --neon-purple: 85 50% 40%;
+    --neon-green: 72 90% 50%;
+    --neon-pink: 45 80% 55%;
+    
+    --glass: 60 20% 100% / 0.05;
+    --glass-border: 60 20% 100% / 0.1;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Space Grotesk', sans-serif;
+    position: relative;
+  }
+
+  /* Gradient background overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: 
+      radial-gradient(ellipse 80% 50% at 20% 20%, hsl(var(--neon-green) / 0.15), transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 30%, hsl(var(--neon-cyan) / 0.1), transparent 45%),
+      radial-gradient(ellipse 50% 60% at 70% 80%, hsl(var(--neon-purple) / 0.08), transparent 50%),
+      radial-gradient(ellipse 40% 40% at 10% 70%, hsl(var(--neon-green) / 0.1), transparent 40%);
+    pointer-events: none;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--neon-cyan)), hsl(var(--neon-purple)));
+  }
+
+  .bg-glass {
+    background: hsl(var(--glass));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .border-glass {
+    border-color: hsl(var(--glass-border));
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 30px hsl(var(--neon-cyan) / 0.3),
+                0 0 60px hsl(var(--neon-cyan) / 0.1);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 30px hsl(var(--neon-purple) / 0.3),
+                0 0 60px hsl(var(--neon-purple) / 0.1);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 30px hsl(var(--neon-green) / 0.3),
+                0 0 60px hsl(var(--neon-green) / 0.1);
+  }
+
+  .gradient-border {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(var(--neon-cyan)), hsl(var(--neon-purple)), hsl(var(--neon-green)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-typing {
+    animation: typing 3.5s steps(40, end);
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 4s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { opacity: 0.5; transform: rotate(0deg) scale(1); }
+  50% { opacity: 1; transform: rotate(3deg) scale(1.05); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 30s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-33.33%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 20s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 20s linear infinite;
+}
+
+@keyframes timeline-glow {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(500%); opacity: 0; }
+}
+
+.animate-timeline-glow {
+  animation: timeline-glow 4s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+/* Animated Tech Orbit Styles */
+.animated-orbit-container {
+  --animation-duration: 5s;
+  --circle-bg-clr: hsl(var(--card));
+  --ellipse-perimeter: 314;
+  --line-length: 5;
+  --line-dash: calc(var(--ellipse-perimeter) - var(--line-length));
+  
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 3/2;
+  position: relative;
+  margin: 0 auto;
+}
+
+.animated-orbit-container > svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.animated-orbit-container .oval {
+  fill: none;
+  stroke: hsl(var(--neon-cyan) / 0.2);
+  stroke-width: 0.5;
+}
+
+.animated-orbit-container .path-line {
+  fill: none;
+  stroke: hsl(var(--neon-cyan));
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-dasharray: var(--line-length) var(--line-dash);
+  stroke-dashoffset: 0;
+  animation: moveLine var(--animation-duration) linear infinite;
+}
+
+@keyframes moveLine {
+  0%, 8% { stroke-dashoffset: -12; }
+  15%, 23% { stroke-dashoffset: -52; }
+  33%, 41% { stroke-dashoffset: -110; }
+  51%, 59% { stroke-dashoffset: -170; }
+  67%, 75% { stroke-dashoffset: -210; }
+  85%, 93% { stroke-dashoffset: -270; }
+  100% { stroke-dashoffset: -324; }
+}
+
+.animated-orbit-container .circle {
+  position: absolute;
+  top: var(--circle-y);
+  left: var(--circle-x);
+  translate: -50% -50%;
+  width: 80px;
+  aspect-ratio: 1;
+  background-color: var(--circle-bg-clr);
+  border: 2px solid hsl(var(--border));
+  color: hsl(var(--foreground));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: orbitPulse var(--animation-duration) linear infinite;
+  animation-delay: calc((var(--animation-duration) * var(--stop-index) / 6) - 250ms);
+}
+
+.animated-orbit-container .circle svg {
+  width: 50%;
+  height: 50%;
+  scale: var(--icon-scale, 0.8);
+  transition: opacity 150ms ease-in-out, scale 150ms ease-in-out;
+}
+
+.animated-orbit-container .circle:nth-of-type(1) { --circle-x: 30%; --circle-y: 15%; --stop-index: 0; }
+.animated-orbit-container .circle:nth-of-type(2) { --circle-x: 70%; --circle-y: 15%; --stop-index: 1; }
+.animated-orbit-container .circle:nth-of-type(3) { --circle-x: 99%; --circle-y: 50%; --stop-index: 2; }
+.animated-orbit-container .circle:nth-of-type(4) { --circle-x: 70%; --circle-y: 85%; --stop-index: 3; }
+.animated-orbit-container .circle:nth-of-type(5) { --circle-x: 30%; --circle-y: 85%; --stop-index: 4; }
+.animated-orbit-container .circle:nth-of-type(6) { --circle-x: 1%; --circle-y: 50%; --stop-index: 5; }
+
+.animated-orbit-container .circle.heart svg { color: #ef4444; }
+.animated-orbit-container .circle.battery svg { color: #22c55e; }
+.animated-orbit-container .circle.notes svg { color: #3b82f6; }
+.animated-orbit-container .circle.parcel svg { color: #eab308; }
+.animated-orbit-container .circle.scooter svg { color: #f97316; }
+.animated-orbit-container .circle.security svg { color: #a855f7; }
+
+@keyframes orbitPulse {
+  5%, 13% {
+    scale: 1.2;
+    border-color: hsl(var(--neon-cyan));
+    background-color: hsl(var(--neon-cyan) / 0.15);
+    --icon-scale: 1;
+  }
+  15% {
+    scale: 1;
+    border-color: hsl(var(--border));
+    background-color: var(--circle-bg-clr);
+    --icon-scale: 0.8;
+  }
+}
+
+@media (max-width: 640px) {
+  .animated-orbit-container .circle {
+    width: 50px;
+  }
+}
