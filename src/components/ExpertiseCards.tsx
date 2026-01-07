@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
-import { Copy, MapPin, Code2, Layers, Sparkles, Download } from "lucide-react";
+import { Copy, MapPin, Code2, Layers, Sparkles, Download, Zap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { WorkflowVisualizer } from "./WorkflowVisualizer";
+import { AutomationFeed } from "./AutomationFeed";
+import WorkflowsGallery from "./WorkflowsGallery";
 import headshot from "@/assets/headshot.png";
 
 const techRow1 = [
@@ -60,54 +63,54 @@ export function ExpertiseCards() {
         <div className="max-w-6xl mx-auto">
           {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            
+
             {/* Collaboration Card - Large */}
             <div className="md:col-span-2 group relative overflow-hidden bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-5 sm:p-8 hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/5">
               {/* Animated background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-neon-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               {/* Orbiting collaboration design */}
               <div className="relative h-36 sm:h-48 mb-6 flex items-center justify-center">
                 {/* Outer orbit path */}
-                <div className="absolute w-60 sm:w-80 h-32 sm:h-40 border border-border/30 rounded-full" />
+                <div className="absolute w-48 sm:w-80 h-24 sm:h-40 border border-border/30 rounded-full" />
                 {/* Inner orbit path */}
-                <div className="absolute w-40 sm:w-56 h-20 sm:h-28 border border-border/20 rounded-full" />
-                
+                <div className="absolute w-32 sm:w-56 h-16 sm:h-28 border border-border/20 rounded-full" />
+
                 {/* Central avatar with glow */}
                 <div className="relative z-10">
                   <div className="absolute inset-0 bg-neon-purple/40 rounded-full blur-xl animate-pulse" />
-                  <div className="relative w-20 h-20 rounded-full border-2 border-primary overflow-hidden shadow-lg shadow-primary/30">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-primary overflow-hidden shadow-lg shadow-primary/30">
                     <img src={headshot} alt="Elbara" className="w-full h-full object-cover" />
                   </div>
                 </div>
-                
+
                 {/* Orbiting avatars - outer ring */}
-                <div className="absolute w-60 sm:w-80 h-32 sm:h-40 animate-spin" style={{ animationDuration: "20s" }}>
-                  <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 w-8 sm:w-10 h-8 sm:h-10 rounded-full border border-border/50 bg-muted/50 overflow-hidden shadow-md">
+                <div className="absolute w-48 sm:w-80 h-24 sm:h-40 animate-spin" style={{ animationDuration: "20s" }}>
+                  <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 w-7 sm:w-10 h-7 sm:h-10 rounded-full border border-border/50 bg-muted/50 overflow-hidden shadow-md">
                     <img src="https://i.pravatar.cc/100?img=1" alt="Collaborator" className="w-full h-full object-cover" />
                   </div>
-                  <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 w-7 sm:w-9 h-7 sm:h-9 rounded-full border border-pink-500/50 bg-muted/50 overflow-hidden shadow-md">
+                  <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 w-6 sm:w-9 h-6 sm:h-9 rounded-full border border-pink-500/50 bg-muted/50 overflow-hidden shadow-md">
                     <img src="https://i.pravatar.cc/100?img=5" alt="Collaborator" className="w-full h-full object-cover" />
                   </div>
-                  <div className="absolute top-1/2 -left-3 sm:-left-4 -translate-y-1/2 w-6 sm:w-8 h-6 sm:h-8 rounded-full border border-border/50 bg-muted/50 overflow-hidden shadow-md">
+                  <div className="absolute top-1/2 -left-3 sm:-left-4 -translate-y-1/2 w-5 sm:w-8 h-5 sm:h-8 rounded-full border border-border/50 bg-muted/50 overflow-hidden shadow-md">
                     <img src="https://i.pravatar.cc/100?img=3" alt="Collaborator" className="w-full h-full object-cover" />
                   </div>
-                  <div className="absolute top-1/2 -right-3 sm:-right-4 -translate-y-1/2 w-7 sm:w-9 h-7 sm:h-9 rounded-full border border-green-500/50 bg-muted/50 overflow-hidden shadow-md">
+                  <div className="absolute top-1/2 -right-3 sm:-right-4 -translate-y-1/2 w-6 sm:w-9 h-6 sm:h-9 rounded-full border border-green-500/50 bg-muted/50 overflow-hidden shadow-md">
                     <img src="https://i.pravatar.cc/100?img=8" alt="Collaborator" className="w-full h-full object-cover" />
                   </div>
                 </div>
-                
+
                 {/* Orbiting avatars - inner ring (reverse) */}
-                <div className="absolute w-40 sm:w-56 h-20 sm:h-28 animate-spin" style={{ animationDuration: "15s", animationDirection: "reverse" }}>
-                  <div className="absolute top-0 left-1/4 -translate-x-1/2 -translate-y-1/2 w-6 sm:w-8 h-6 sm:h-8 rounded-full border border-border/40 bg-muted/50 overflow-hidden shadow-md">
+                <div className="absolute w-32 sm:w-56 h-16 sm:h-28 animate-spin" style={{ animationDuration: "15s", animationDirection: "reverse" }}>
+                  <div className="absolute top-0 left-1/4 -translate-x-1/2 -translate-y-1/2 w-5 sm:w-8 h-5 sm:h-8 rounded-full border border-border/40 bg-muted/50 overflow-hidden shadow-md">
                     <img src="https://i.pravatar.cc/100?img=12" alt="Collaborator" className="w-full h-full object-cover" />
                   </div>
-                  <div className="absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/2 w-6 sm:w-8 h-6 sm:h-8 rounded-full border border-blue-500/50 bg-muted/50 overflow-hidden shadow-md">
+                  <div className="absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/2 w-5 sm:w-8 h-5 sm:h-8 rounded-full border border-blue-500/50 bg-muted/50 overflow-hidden shadow-md">
                     <img src="https://i.pravatar.cc/100?img=15" alt="Collaborator" className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>
-              
+
               <div className="relative flex items-center gap-2 mb-2">
                 <Code2 className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
                 <span className="text-xs uppercase tracking-wider text-muted-foreground">Collaboration</span>
@@ -127,13 +130,12 @@ export function ExpertiseCards() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse" />
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-neon-purple/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: "1s" }} />
               </div>
-              
+
               <div className="relative">
-                <h3 className="text-xl font-semibold text-center mb-2">
-                  Passionate about cutting-edge
+                <h3 className="text-lg sm:text-xl font-semibold text-center mb-2">
+                  Passionate about cutting-edge <span className="text-primary">technologies</span>
                 </h3>
-                <p className="text-primary text-xl font-semibold text-center mb-6">technologies</p>
-                
+
                 {/* Scrolling rows container */}
                 <div className="space-y-3 overflow-hidden">
                   {/* Row 1 - scroll left */}
@@ -148,7 +150,7 @@ export function ExpertiseCards() {
                       </div>
                     ))}
                   </div>
-                  
+
                   {/* Row 2 - scroll right */}
                   <div className="flex gap-3 animate-scroll-right">
                     {[...techRow2, ...techRow2, ...techRow2].map((tech, index) => (
@@ -161,7 +163,7 @@ export function ExpertiseCards() {
                       </div>
                     ))}
                   </div>
-                  
+
                   {/* Row 3 - scroll left */}
                   <div className="flex gap-3 animate-scroll-left" style={{ animationDuration: "25s" }}>
                     {[...techRow3, ...techRow3, ...techRow3].map((tech, index) => (
@@ -174,7 +176,7 @@ export function ExpertiseCards() {
                       </div>
                     ))}
                   </div>
-                  
+
                   {/* Row 4 - scroll right */}
                   <div className="flex gap-3 animate-scroll-right" style={{ animationDuration: "22s" }}>
                     {[...techRow4, ...techRow4, ...techRow4].map((tech, index) => (
@@ -188,7 +190,7 @@ export function ExpertiseCards() {
                     ))}
                   </div>
                 </div>
-                
+
                 {/* Download Resume Button */}
                 <div className="flex justify-center mt-6">
                   <a
@@ -202,7 +204,7 @@ export function ExpertiseCards() {
                     <span>Download Resume</span>
                   </a>
                 </div>
-                
+
                 {/* Browser Mockup - Websites that Impact */}
                 <div className="mt-6 relative">
                   {/* Outer glow rings */}
@@ -210,7 +212,7 @@ export function ExpertiseCards() {
                     <div className="absolute inset-0 border border-border/20 rounded-full" />
                     <div className="absolute inset-4 border border-border/10 rounded-full" />
                   </div>
-                  
+
                   {/* Browser window */}
                   <div className="relative bg-card/80 backdrop-blur-sm rounded-xl border border-border/50 overflow-hidden">
                     {/* Browser header */}
@@ -224,18 +226,18 @@ export function ExpertiseCards() {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Browser content */}
                     <div className="p-6 text-center">
                       <h4 className="text-lg font-semibold mb-1">Websites that</h4>
                       <p className="text-primary text-lg font-semibold mb-4">Impact.</p>
-                      
+
                       {/* Decorative lines */}
                       <div className="flex justify-center gap-1 mb-4">
                         <div className="w-12 h-0.5 bg-border/50 rounded" />
                         <div className="w-8 h-0.5 bg-border/30 rounded" />
                       </div>
-                      
+
                       {/* Buttons */}
                       <div className="flex items-center justify-center gap-2">
                         <Link
@@ -264,7 +266,7 @@ export function ExpertiseCards() {
                   I'm very flexible with time
                 </p>
                 <p className="text-primary text-center mb-4">zone communications</p>
-                
+
                 <div className="flex items-center justify-center gap-2 mb-6">
                   <span className="px-3 py-1 rounded-full bg-muted/50 text-xs font-medium hover:bg-muted transition-colors">
                     <span className="text-muted-foreground">DZ</span> Algeria
@@ -276,7 +278,7 @@ export function ExpertiseCards() {
                     <span className="text-muted-foreground">FR</span> France
                   </span>
                 </div>
-                
+
                 {/* Globe visualization with animation */}
                 <div className="relative h-32 flex items-center justify-center">
                   <div className="w-24 h-24 rounded-full border border-primary/30 relative group-hover:scale-110 transition-transform duration-500">
@@ -286,7 +288,7 @@ export function ExpertiseCards() {
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary animate-pulse" />
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-2 mt-4">
                   <MapPin className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                   <span className="text-xs uppercase tracking-wider text-muted-foreground">Remote</span>
@@ -299,11 +301,11 @@ export function ExpertiseCards() {
             <div className="group relative overflow-hidden bg-gradient-to-br from-muted/80 to-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-8 flex flex-col items-center justify-center text-center hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/5">
               {/* Animated gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-neon-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               <div className="relative">
                 <h3 className="text-2xl font-semibold mb-1 group-hover:text-primary transition-colors duration-300">Let's work together</h3>
                 <p className="text-primary text-xl mb-6">on your next project</p>
-                
+
                 <button
                   onClick={copyEmail}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-card/50 text-sm hover:border-primary hover:bg-primary/10 transition-all duration-300 group-hover:scale-105"
@@ -314,32 +316,22 @@ export function ExpertiseCards() {
               </div>
             </div>
 
-            {/* Websites that Impact Card */}
+            {/* Live Automation Feed Card */}
             <div className="group relative overflow-hidden bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/5">
-              <div className="flex items-center gap-1 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-500 group-hover:animate-pulse" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500 group-hover:animate-pulse" style={{ animationDelay: "0.2s" }} />
-                <div className="w-3 h-3 rounded-full bg-green-500 group-hover:animate-pulse" style={{ animationDelay: "0.4s" }} />
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-2 h-2 rounded-full bg-neon-green animate-pulse" />
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">Live Proof of Work</span>
               </div>
-              
-              <div className="text-center py-4">
-                <h3 className="text-lg font-semibold mb-1">Websites that</h3>
-                <p className="text-primary text-lg font-semibold group-hover:scale-110 transition-transform duration-300 inline-block">Impact.</p>
-              </div>
-              
-              <div className="flex items-center justify-center gap-2 mt-4">
-                <Link
-                  to="/projects"
-                  className="px-4 py-2 rounded-lg border border-border/50 text-sm hover:border-primary hover:bg-primary/10 transition-all duration-300"
-                >
-                  Start →
-                </Link>
-                <Link
-                  to="/experience"
-                  className="px-4 py-2 rounded-lg bg-muted/50 text-sm hover:bg-muted transition-all duration-300"
-                >
-                  Details
-                </Link>
+
+              <AutomationFeed />
+
+              <div className="mt-4 flex items-center justify-between">
+                <span className="text-[10px] text-muted-foreground font-mono">Uptime: 99.99%</span>
+                <div className="flex items-center gap-1">
+                  <div className="w-1 h-1 rounded-full bg-primary" />
+                  <div className="w-1 h-1 rounded-full bg-primary/50" />
+                  <div className="w-1 h-1 rounded-full bg-primary/20" />
+                </div>
               </div>
             </div>
 
@@ -358,24 +350,54 @@ export function ExpertiseCards() {
               </div>
             </div>
 
-            {/* Currently Building Card */}
-            <div className="md:col-span-3 group relative overflow-hidden bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/5">
-              {/* Animated line */}
-              <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary via-neon-purple to-primary w-0 group-hover:w-full transition-all duration-1000" />
-              
-              <div className="relative flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300">
-                  <Layers className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
+            {/* n8n Specialist Showcase Card */}
+            <div className="md:col-span-3 group relative overflow-hidden bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 sm:p-8 hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/5">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Zap className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <span className="text-xs uppercase tracking-widest text-muted-foreground">n8n Specialist</span>
+                      <h3 className="text-2xl font-bold text-foreground">Advanced Workflow Automation</h3>
+                    </div>
+                  </div>
+
+                  <p className="text-muted-foreground leading-relaxed">
+                    I architect complex, self-healing automation systems that connect your entire tech stack.
+                    From AI-driven lead qualification to automated content engines.
+                  </p>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div className="p-4 rounded-xl bg-muted/30 border border-border/30">
+                      <p className="text-2xl font-bold text-primary">100+</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-tighter">Workflows</p>
+                    </div>
+                    <div className="p-4 rounded-xl bg-muted/30 border border-border/30">
+                      <p className="text-2xl font-bold text-neon-purple">50k+</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-tighter">Tasks Monthly</p>
+                    </div>
+                    <div className="p-4 rounded-xl bg-muted/30 border border-border/30 col-span-2 sm:col-span-1">
+                      <p className="text-2xl font-bold text-neon-green">99.9%</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-tighter">Reliability</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-xs uppercase tracking-wider text-muted-foreground">The Inside Scoop</span>
-                  <h3 className="text-lg font-medium text-foreground">Currently building AI-powered automation solutions</h3>
+
+                <div className="relative">
+                  <WorkflowVisualizer />
+                  {/* Decorative glow */}
+                  <div className="absolute -inset-4 bg-primary/5 blur-2xl -z-10 rounded-full" />
                 </div>
               </div>
             </div>
 
           </div>
         </div>
+
+        {/* Free Workflows Gallery */}
+        <WorkflowsGallery />
       </div>
     </section>
   );

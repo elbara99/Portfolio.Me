@@ -72,14 +72,14 @@ export function Hero() {
 
             {/* Main Heading */}
             <div className="space-y-2">
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-none">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-none">
                 Hello
               </h1>
               <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
-                <span className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold">I'm</span>
+                <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">I'm</span>
                 <div className="relative">
-                  <div className="px-4 sm:px-6 py-2 sm:py-3 bg-card border border-border rounded-lg">
-                    <span className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-gradient-cyan">
+                  <div className="px-3 sm:px-6 py-2 sm:py-3 bg-card border border-border rounded-lg">
+                    <span className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gradient-cyan">
                       Elbara
                     </span>
                   </div>

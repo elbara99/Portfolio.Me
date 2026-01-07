@@ -2,7 +2,8 @@ import { Github, Linkedin, Mail, Code2, Layers, Zap } from "lucide-react";
 import headshot from "@/assets/headshot.png";
 
 const skills = [
-  "Python", "React", "TypeScript", "Node.js", "n8n", 
+  "Python", "React", "TypeScript", "Node.js", "n8n Specialist",
+  "Custom Node Dev", "Error Handling", "Self-Hosting",
   "OpenAI", "AI Agents", "Automation"
 ];
 
@@ -44,15 +45,15 @@ export function AboutCard() {
               <div className="relative">
                 {/* Glow effect */}
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-4/5 h-8 bg-gradient-to-r from-red-500 via-green-500 to-blue-500 blur-xl opacity-60" />
-                
+
                 {/* Image container */}
                 <div className="relative rounded-3xl overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm p-4">
-                  <img 
-                    src={headshot} 
-                    alt="Elbara Mouaffak" 
+                  <img
+                    src={headshot}
+                    alt="Elbara Mouaffak"
                     className="w-full max-w-md h-auto rounded-2xl object-cover"
                   />
-                  
+
                   {/* RGB bottom glow bar */}
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-green-500 to-blue-500" />
                 </div>
@@ -68,7 +69,7 @@ export function AboutCard() {
                   <p className="text-muted-foreground text-xs sm:text-sm">UNIVERSITY OF BATNA 2</p>
                   <p className="text-muted-foreground text-xs sm:text-sm">AI ENGINEERING STUDENT</p>
                 </div>
-                
+
                 {/* Social Links */}
                 <div className="flex items-center gap-3">
                   {socialLinks.map((link) => (
@@ -95,7 +96,7 @@ export function AboutCard() {
 
               {/* Description */}
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                I thrive on learning, building, and solving complex challenges — always reflecting on how each 
+                I thrive on learning, building, and solving complex challenges — always reflecting on how each
                 experience contributes to personal and team growth.
               </p>
 
@@ -115,7 +116,7 @@ export function AboutCard() {
               </div>
 
               {/* Feature Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {features.map((feature) => (
                   <div
                     key={feature.title}

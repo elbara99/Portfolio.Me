@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Compass } from "lucide-react";
+import { ArrowRight, Compass, Zap } from "lucide-react";
 import logoBadge from "@/assets/logo-badge.png";
 
 export function CTASection() {
@@ -7,26 +7,26 @@ export function CTASection() {
     <section className="relative py-24 overflow-hidden">
       {/* Dark gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/95" />
-      
+
       {/* Subtle texture overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-20"
         style={{
           backgroundImage: `radial-gradient(ellipse at center, transparent 0%, hsl(var(--background)) 70%)`,
         }}
       />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto">
           {/* Logo */}
           <div className="mb-8">
-            <img 
-              src={logoBadge} 
-              alt="EM Logo" 
+            <img
+              src={logoBadge}
+              alt="EM Logo"
               className="w-20 h-20 mx-auto rounded-full shadow-lg shadow-primary/20"
             />
           </div>
-          
+
           {/* Main Heading with Badge */}
           <div className="relative inline-block mb-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wide">
@@ -36,12 +36,12 @@ export function CTASection() {
               <span className="text-muted-foreground">Let's Make It</span>{" "}
               <span className="text-foreground">Happen!</span>
             </h2>
-            
+
             {/* Spinning Badge */}
             <div className="absolute -right-2 sm:-right-4 md:-right-16 -top-4 sm:top-0 md:top-2">
               <div className="relative w-16 sm:w-20 h-16 sm:h-20 md:w-24 md:h-24">
                 {/* Rotating text */}
-                <svg 
+                <svg
                   className="w-full h-full animate-spin-slow"
                   viewBox="0 0 100 100"
                 >
@@ -53,11 +53,11 @@ export function CTASection() {
                   </defs>
                   <text className="text-[10px] uppercase tracking-[0.3em] fill-primary font-medium">
                     <textPath href="#circlePath">
-                      OPEN TO WORK • OPEN TO WORK • 
+                      OPEN TO WORK • OPEN TO WORK •
                     </textPath>
                   </text>
                 </svg>
-                
+
                 {/* Center icon */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-background border-2 border-primary flex items-center justify-center">
@@ -67,16 +67,25 @@ export function CTASection() {
               </div>
             </div>
           </div>
-          
-          {/* CTA Button */}
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-card/50 text-foreground font-medium hover:bg-card hover:border-primary transition-all group mb-8"
-          >
-            Get In Touch
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            <Link
+              to="/contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all group shadow-lg shadow-primary/20"
+            >
+              Get In Touch
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+
+            <Link
+              to="/contact?type=audit"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-primary/50 bg-primary/5 text-primary font-bold hover:bg-primary/10 transition-all group"
+            >
+              <Zap className="w-4 h-4 fill-primary" />
+              Free Automation Audit
+            </Link>
+          </div>
+
           {/* Availability Text */}
           <div className="space-y-2">
             <p className="text-foreground font-semibold">
